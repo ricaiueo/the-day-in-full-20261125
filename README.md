@@ -79,13 +79,22 @@ is no clock read, no RNG and no dependence on dict iteration order, in either
 ```
 $ MAKEFUN_OUTPUT_DIR=run1 python main.py && MAKEFUN_OUTPUT_DIR=run2 python main.py
 $ md5sum run1/entry.png run2/entry.png
-f083ea825628ab5f63d77e4abed3460e  run1/entry.png
-f083ea825628ab5f63d77e4abed3460e  run2/entry.png
+65bb7ead89169eff011951d4e9eee886  run1/entry.png
+65bb7ead89169eff011951d4e9eee886  run2/entry.png
 ```
 
 **Rendering.** The sheet is composed at 2× (2048 px) and resampled to
 1024 × 1024 with Lanczos, which keeps 6 pt type legible and hairline rules
-even. Output is 673,785 bytes, under the 1 MiB cap.
+even.
+
+**Size.** The page is flat vector art — a few dozen inks, plus the soft edges
+Lanczos leaves behind — so it is written as a 256-colour palette PNG rather
+than truecolour. That is 203,053 bytes instead of 673,785, a 70% cut, for a
+mean per-pixel difference of 1.2/255 and no visible change: nothing bands,
+and 6 pt type stays clean. Dithering is off, because with this few distinct
+inks it only adds noise for the encoder to carry. Under the 1 MiB cap with
+room to spare; if a future draft ever exceeded it, the palette steps down to
+192, 128 then 64 colours.
 
 **Layout.** Section tops are fixed constants (`Y_MAST` … `Y_FOOT`) rather than
 an accumulating cursor, so one overlong headline cannot cascade into the block
