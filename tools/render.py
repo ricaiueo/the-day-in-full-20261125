@@ -126,14 +126,6 @@ def cond(size, weight="Medium"):
     return font("Oswald[wght].ttf", size, weight)
 
 
-def serif(size):
-    return font("OldStandard-Regular.ttf", size)
-
-
-def serif_b(size):
-    return font("OldStandard-Bold.ttf", size)
-
-
 # ----------------------------------------------------------------------------
 # Drawing helpers -- all coordinates are in 1024-space; S() scales to canvas
 # ----------------------------------------------------------------------------

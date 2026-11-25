@@ -100,7 +100,7 @@ has no terrestrial location and is noted as unplotted rather than faked.
 ## Fonts
 
 Bundled under the SIL Open Font License: Playfair Display, Libre Baskerville,
-Archivo, Oswald, Old Standard and Unifraktur Maguntia. See `assets/fonts/`.
+Archivo and Oswald. The license text is at `assets/fonts/OFL.txt`.
 
 ## Sources
 
