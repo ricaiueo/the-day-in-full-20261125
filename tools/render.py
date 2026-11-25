@@ -47,22 +47,25 @@ FONTS = os.path.join(HERE, "assets", "fonts")
 # Palette -- newsprint cream, iron-gall navy, vermilion
 # ----------------------------------------------------------------------------
 
-PAPER      = (246, 241, 229)
-PAPER_DEEP = (238, 231, 214)
-NAVY       = (27, 42, 74)
-NAVY_SOFT  = (58, 74, 108)
-INK        = (34, 36, 44)
-GREY       = (124, 126, 134)
-RULE       = (196, 188, 170)
-RED        = (176, 42, 42)
-RED_BRIGHT = (205, 56, 46)
-GOLD       = (214, 154, 46)
-TEAL       = (27, 107, 94)
-BLUE       = (43, 75, 155)
-GREEN      = (46, 125, 79)
-PURPLE     = (107, 74, 138)
+PAPER      = (243, 238, 226)      # cream newsprint behind the cards
+CARD       = (253, 251, 246)      # the cards themselves, near-white
+PAPER_DEEP = (234, 227, 210)
+NAVY       = (22, 30, 52)
+NAVY_SOFT  = (74, 86, 116)
+INK        = (24, 25, 30)         # headline black
+BODY_INK   = (46, 48, 56)
+GREY       = (122, 124, 132)
+RULE       = (206, 198, 180)
+HAIR       = (222, 215, 199)
+RED        = (176, 32, 36)
+RED_BRIGHT = (206, 48, 42)
+GOLD       = (216, 150, 38)
+TEAL       = (20, 110, 98)
+BLUE       = (34, 72, 158)
+GREEN      = (32, 122, 72)
+PURPLE     = (104, 64, 142)
 WHITE      = (255, 255, 255)
-CREAM      = (242, 236, 222)
+CREAM      = (247, 243, 233)
 
 REGION_COLOR = {
     "EUROPE":       TEAL,
@@ -836,139 +839,125 @@ STAT_GLYPHS = [g_helmet, g_containers, g_downarrow, g_rocket, g_treaty,
 
 HEROES = [
     dict(
-        n=1, chip="AI ROUT WIDENS", tag="TAIEX −6%",
+        n=1, chip="AI ROUT WIDENS",
+        pills=[("TAIEX −6%", RED_BRIGHT), ("SOFTBANK −16.1%", NAVY)],
         kicker="TAIPEI · SEOUL · TOKYO · MARKETS",
         region="ASIA-PACIFIC", cert="REPORTED",
         head="Asia's AI trade cracks as Taiex sheds 6%",
-        text="Taiwan's Taiex tumbled more than 6% as TSMC sank 8.1% and "
-             "MediaTek 10%. Seoul's Kospi lost 5.6% to 4,725.84, Samsung "
-             "−9.1%; the Nikkei fell 3.6% to 56,502.97 with SoftBank "
-             "−16.1%. Hong Kong bucked it, +1%. Relief at Jensen Huang's "
-             "return to Nvidia is tempered by governance questions.",
+        text="TSMC sank 8.1% and MediaTek 10%. Seoul's Kospi lost 5.6% to "
+             "4,725.84, Samsung −9.1%; the Nikkei fell 3.6% to 56,502.97. "
+             "Hong Kong bucked it, +1%.",
         src="(AP, Reuters)", art=art_market_rout, ll=(121.5, 25.0),
     ),
     dict(
-        n=2, chip="LEAKED REGISTRY", tag="490,334",
+        n=2, chip="LEAKED REGISTRY",
+        pills=[("490,334 DEAD", RED_BRIGHT), ("11m RECORDS", NAVY)],
         kicker="MOSCOW · LONDON · WAR DEAD",
         region="EUROPE", cert="REPORTED",
         head="Russia's own records show almost 490,000 war dead",
-        text="BBC Russian and Mediazona matched a leak of more than 11m "
-             "Rosstat death records, 2021 to September 2026, and count "
-             "490,334 soldiers killed since February 2022 — 425,174 "
-             "explicitly tied to military activity. Rosstat admits a "
-             "cyber-attack but denies protected data left its systems.",
+        text="BBC Russian and Mediazona matched a leak of 11m Rosstat death "
+             "records to September 2026; 425,174 are tied explicitly to "
+             "military activity. Rosstat denies a leak.",
         src="(BBC Russian, Mediazona)", art=art_leaked_files,
         ll=(37.6, 55.8),
     ),
     dict(
-        n=3, chip="FIRST FOR PAKISTAN", tag="00:18 UTC",
+        n=3, chip="FIRST FOR PAKISTAN",
+        pills=[("1ST PAKISTANI", GREEN), ("00:18 UTC", NAVY)],
         kicker="JIUQUAN, CHINA · SPACE",
         region="ASIA-PACIFIC", cert="REPORTED",
         head="Shenzhou-24 carries a Pakistani into orbit",
-        text="A Long March-2F lifted off at 00:18 UTC (08:18 Beijing) with "
-             "commander Tang Hongbo, engineer Wu Yi and Muhammad Zeeshan "
-             "Ali, 40, a former fighter pilot and the first foreigner on a "
-             "Chinese crewed flight. He flies as payload specialist to "
-             "Tiangong for five to ten days, under a 2025 accord.",
+        text="A Long March-2F lifted off at 00:18 UTC with Tang Hongbo, Wu Yi "
+             "and Muhammad Zeeshan Ali, 40 — the first foreigner on a "
+             "Chinese crewed flight, at Tiangong for five to ten days.",
         src="(Reuters, Xinhua, Dawn)", art=art_rocket, ll=(100.3, 41.1),
     ),
 ]
 
 CARDS = [
-    dict(n=4, chip="PORT BOMBED", tag="RED SEA",
+    dict(n=4, chip="PORT BOMBED",
+         pills=[("HODEIDAH", RED_BRIGHT), ("JEDDAH THREAT", NAVY)],
          kicker="HODEIDAH, YEMEN · WAR", region="MIDDLE EAST",
          cert="REPORTED",
          head="Coalition bombs Hodeidah port",
          text="Saudi-led jets hit the port's “operational capabilities” "
-              "plus targets in Saada and Amran, after civilians were warned "
-              "off. Houthis had threatened Jeddah.",
+              "and targets in Saada and Amran.",
          src="(Al Jazeera, Arab News)", art=art_port_strike, ll=(42.95, 14.8)),
-    dict(n=5, chip="2 DEAD, 48 HURT", tag="NEW FRONT",
+    dict(n=5, chip="OVERNIGHT STRIKE",
+         pills=[("2 DEAD, 48 HURT", RED_BRIGHT), ("LIBYA FRONT", NAVY)],
          kicker="KYIV, UKRAINE · WAR", region="EUROPE", cert="REPORTED",
          head="Russian strike kills two as Kyiv explains Libya raid",
-         text="Overnight missiles killed two and wounded 48. Kyiv set out its "
-              "account of the sea-drone attack on a Russian corvette at "
-              "Benghazi — a Mediterranean front.",
+         text="Kyiv set out its account of the sea-drone attack on a Russian "
+              "corvette at Benghazi — a Mediterranean front.",
          src="(AP, Reuters)", art=art_strike_block, ll=(30.5, 50.45)),
-    dict(n=6, chip="16 ECONOMIES", tag="SOURCES",
+    dict(n=6, chip="TRADE",
+         pills=[("16 ECONOMIES", BLUE), ("SECTION 301", NAVY)],
          kicker="WASHINGTON · TRADE", region="AMERICAS", cert="REPORTED",
          head="US readies subsidy tariffs on 16 economies",
-         text="A Section 301 finding would hit China, the EU, Japan, Korea, "
-              "Taiwan, India and ten more, replacing duties the Supreme Court "
-              "struck down. China faces the steepest rates.",
+         text="China, the EU, Japan, Korea, Taiwan, India and ten more, "
+              "replacing duties the Supreme Court struck down.",
          src="(AP sources)", art=art_tariffs, ll=(-77.0, 38.9)),
-    dict(n=7, chip="A$740M", tag="NO FOREIGN BASE",
+    dict(n=7, chip="PACIFIC TREATY",
+         pills=[("A$740m", GOLD), ("NO FOREIGN BASE", NAVY)],
          kicker="CANBERRA · PACIFIC", region="OCEANIA", cert="REPORTED",
          head="Australia and Solomons sign a China-shaped treaty",
-         text="Canberra becomes “primary security partner”; no foreign "
-              "base, and consultation on critical infrastructure. A$740m over "
-              "ten years. Sogavare attacks the fast-track.",
+         text="Canberra becomes “primary security partner”, with "
+              "consultation on critical infrastructure, over ten years.",
          src="(AFP, ABC)", art=art_treaty, ll=(149.1, -35.3)),
-    dict(n=8, chip="FIRST CLOSE-UPS", tag="TONIGHT",
+    dict(n=8, chip="FIRST CLOSE-UPS",
+         pills=[("151 m MOONLET", PURPLE), ("33 MIN SHIFT", NAVY)],
          kicker="DIDYMOS SYSTEM · SPACE", region="WORLD",
          cert="FORECAST",
          head="Hera reaches the asteroid NASA punched",
-         text="ESA's probe is on station at Dimorphos, the 151 m moonlet DART "
-              "hit in 2022, shortening its orbit by 33 minutes. First "
-              "close-ups were due to be shown this evening.",
+         text="ESA's probe is on station at Dimorphos, which DART hit in 2022. "
+              "First close-ups were due this evening.",
          src="(ESA)", art=art_asteroid, ll=None),
-    dict(n=9, chip="FIRST PARTNER", tag="COALITION",
+    dict(n=9, chip="COALITION",
+         pills=[("1ST PARTNER", TEAL)],
          kicker="JERUSALEM · POLITICS", region="MIDDLE EAST",
          cert="REPORTED",
          head="Eisenkot lands his first coalition partner",
-         text="The former chief of staff secured an opening partner in his "
-              "bid to assemble a governing majority, the first hard number in "
-              "a fragmented post-election Knesset.",
+         text="The former chief of staff has an opening partner in his bid for "
+              "a majority in a fragmented Knesset.",
          src="(Al Jazeera)", art=art_coalition, ll=(35.2, 31.8)),
-    dict(n=10, chip="SABOTAGE WARNING", tag="ADVISORY",
-         kicker="LONDON · SECURITY", region="EUROPE", cert="REPORTED",
-         head="Britain tells firms aiding Ukraine to brace",
-         text="Officials warned UK companies supplying Ukraine to expect "
-              "Russian sabotage attempts against plant, logistics and "
-              "undersea or land cable infrastructure.",
-         src="(BBC, Al Jazeera)", art=art_sabotage, ll=(-0.1, 51.5)),
-    dict(n=11, chip="POLITBURO", tag="INVESTIGATED",
+    dict(n=10, chip="POLITBURO",
+         pills=[("SHANGHAI CHIEF", RED_BRIGHT), ("INVESTIGATED", NAVY)],
          kicker="SHANGHAI · CHINA", region="ASIA-PACIFIC",
          cert="REPORTED",
          head="China investigates Shanghai's party chief",
-         text="Chen Jining, a Politburo member and party secretary of China's "
-              "financial capital, is under investigation — among the most "
-              "senior figures taken in years.",
+         text="Chen Jining, a Politburo member, is among the most senior "
+              "figures taken in years.",
          src="(AP, Xinhua)", art=art_investigation, ll=(121.5, 31.2)),
-    dict(n=12, chip="CASE CLOSED", tag="LEFT US",
+    dict(n=11, chip="CASE CLOSED",
+         pills=[("LEFT FOR SPAIN", BLUE)],
          kicker="MADRID · MIGRATION", region="AMERICAS", cert="REPORTED",
          head="Abrego Garcia leaves the US for Spain",
-         text="Kilmar Abrego Garcia, whose mistaken deportation to El "
-              "Salvador became a flashpoint, departed voluntarily for Spain, "
-              "ending a long legal fight.",
+         text="His mistaken deportation to El Salvador became a flashpoint; he "
+              "departed voluntarily, ending the fight.",
          src="(AP, BBC)", art=art_departure, ll=(-3.7, 40.4)),
-    dict(n=13, chip="HOSTAGES", tag="TOURIST CITY",
-         kicker="CARTAGENA, COLOMBIA · CRIME", region="AMERICAS",
-         cert="REPORTED",
-         head="Armed men seize hostages in Cartagena",
-         text="Gunmen took hostages in one of Colombia's foremost tourist "
-              "cities, days after a bomb in a central city wounded 23 as "
-              "violence moves into urban centres.",
-         src="(AP)", art=art_hostage, ll=(-75.5, 10.4)),
-    dict(n=14, chip="4 TONNES", tag="SCHEDULED",
+    dict(n=12, chip="SCHEDULED BLAST",
+         pills=[("4 TONNES", GOLD), ("LEAD AZIDE", NAVY)],
          kicker="BURLINGTON, IOWA · US", region="AMERICAS",
          cert="FORECAST",
          head="Army to blow up a lead azide stockpile",
-         text="More than four tonnes of unstable primary explosive were set "
-              "for controlled detonation. “This could be apocalyptic,” "
-              "one resident told the BBC.",
+         text="“This could be apocalyptic,” one resident told the BBC "
+              "of the controlled detonation.",
          src="(AP, BBC, Al Jazeera)", art=art_detonation, ll=(-91.1, 40.8)),
-    dict(n=15, chip="16 DAYS BEGIN", tag="25 NOV",
+    dict(n=13, chip="16 DAYS BEGIN",
+         pills=[("25 NOV", PURPLE), ("UN DAY", NAVY)],
          kicker="WORLDWIDE · UN DAY", region="WORLD", cert="REPORTED",
          head="The day the world counts violence against women",
-         text="The UN day opening the 16 Days campaign landed as a rights "
-              "group reported 28 women and girls abducted fleeing Blue Nile "
-              "fighting, and South Africa reckoned with a wave of killings.",
+         text="28 women and girls were reported seized fleeing Blue Nile; "
+              "South Africa counted its own dead.",
          src="(UN, allAfrica, BBC)", art=art_orange_day, ll=(34.0, 11.5)),
 ]
 
 # Secondary wire budget -- one line each, numbered on from the cards.
 ALSO = [
+    ("EUROPE", "Britain warns firms aiding Ukraine to brace for Russian "
+               "sabotage of plant and cable. (BBC, Al Jazeera)"),
+    ("AMERICAS", "Armed men seize hostages in Cartagena, days after a bomb "
+                 "wounded 23 in a central city. (AP)"),
     ("EUROPE", "ICC president thanks Japan for an early 2027 payment as US "
                "sanctions squeeze the court. (AP)"),
     ("EUROPE", "Slovak MPs approve Fico's plan to scrap postal voting from "
@@ -1151,80 +1140,79 @@ def certainty_mark(sh, x, y, cert, size=5.4):
     return wdt
 
 
-# Fixed vertical plan for the sheet (1024 tall).  Keeping these explicit
-# stops one overlong headline from cascading into the block below.
-Y_MAST     = 4
-Y_SUB      = 63
-Y_RULE1    = 79
-Y_STATS    = 84
-H_STATS    = 48
-Y_REGION   = 136
-H_REGION   = 17
-Y_TIME     = 157
+# Fixed vertical plan for the sheet (1024 tall).  Keeping these explicit stops
+# one overlong headline from cascading into the block below.
+Y_STRIP    = 5          # the dated top rail
+H_STRIP    = 13
+Y_MAST     = 22
+Y_SUB      = 77
+Y_RULE1    = 92
+Y_REGION   = 97
+H_REGION   = 16
+Y_TIME     = 116
 H_TIME     = 17
-Y_HERO     = 181
-H_HERO     = 218
-Y_ROW1     = 404
-Y_ROW2     = 566
-H_ROW      = 162
-Y_BOTHDR   = 731
-Y_BOTTOM   = 747
-H_MAP      = 152
-Y_DATECHK  = 906
-H_DATECHK  = 36
-Y_FOOT     = 948
+Y_STATS    = 134
+H_STATS    = 38
+Y_HERO     = 175
+H_HERO     = 186
+Y_ROW1     = 370
+Y_ROW2     = 528
+H_ROW      = 158
+Y_BOTHDR   = 690
+Y_BOTTOM   = 706
+H_MAP      = 242
+Y_DATECHK  = 954
+H_DATECHK  = 30
+Y_FOOT     = 988
+
+
+def pill(sh, x, y, text, bg, fg=WHITE, size=6.4, pad=4.0, h=11.0,
+         anchor="l"):
+    """A fact label set on the artwork: the picture carries the number."""
+    f = cond(size, "SemiBold")
+    w = sh.tw(text, f) + pad * 2
+    if anchor == "r":
+        x -= w
+    sh.rect(x, y, w, h, fill=bg)
+    sh.text(x + w / 2.0, y + h / 2.0, text, f, fg, anchor="mm")
+    return w
+
+
+def card_frame(sh, x, y, w, h):
+    """A white card with a hairline, the way the sheet's grid reads."""
+    sh.rect(x, y, w, h, fill=CARD)
+    sh.rect(x, y, w, h, outline=HAIR, width=0.6)
 
 
 def build():
     sh = Sheet()
+    sh.rect(0, 0, W, H, fill=PAPER)
 
-    # ---- paper tone: a faint top-to-bottom warm gradient ------------------
-    for i in range(H):
-        t = i / float(H)
-        c = (int(246 - 5 * t), int(241 - 6 * t), int(229 - 7 * t))
-        sh.d.line([(0, S(i)), (S(W), S(i))], fill=c, width=SCALE)
+    # ======================= DATED TOP RAIL ===============================
+    sh.rect(M, Y_STRIP, CW, H_STRIP, fill=INK)
+    sh.text(M + 6, Y_STRIP + H_STRIP / 2.0, "THE WORLD IN ONE DAY",
+            cond(6.6, "SemiBold"), CREAM, anchor="lm", spacing=0.7)
+    sh.text(M + CW - 6, Y_STRIP + H_STRIP / 2.0,
+            "EVERY STORY DATED WEDNESDAY 25 NOVEMBER 2026",
+            cond(6.6, "SemiBold"), GOLD, anchor="rm", spacing=0.7)
 
     # ======================= MASTHEAD =====================================
     f_mast = sh.fit("Wednesday 25 November 2026",
-                    lambda s: display(s, "Bold"), 44, 30, CW - 8, 1)
-    sh.text(W / 2.0, Y_MAST, "Wednesday 25 November 2026", f_mast, NAVY,
+                    lambda t: display(t, "Black"), 45, 28, CW - 4, 1)
+    sh.text(W / 2.0, Y_MAST, "Wednesday 25 November 2026", f_mast, INK,
             anchor="ma")
 
-    sub = ("Asia's AI trade cracks · Leaked files put Russia's war dead "
-           "near 490,000 · A Pakistani rides Shenzhou-24 to Tiangong")
-    f_sub = sh.fit(sub, lambda s: display_it(s, "Medium"), 11.5, 8.0,
+    sub = ("Asia's AI trade cracks \u00b7 Leaked files put Russia's war dead "
+           "near 490,000 \u00b7 A Pakistani rides Shenzhou-24 to Tiangong")
+    f_sub = sh.fit(sub, lambda t: display_it(t, "Medium"), 12.0, 8.0,
                    CW - 10, 1)
     sh.text(W / 2.0, Y_SUB, sub, f_sub, RED, anchor="ma")
-
-    sh.rect(M, Y_RULE1, CW, 2.2, fill=NAVY)
-
-    # ======================= STAT STRIP ===================================
-    cellw = CW / 6.0
-    for i, (num, cap) in enumerate(STATS):
-        cx = M + cellw * i
-        if i:
-            sh.line(cx, Y_STATS + 5, cx, Y_STATS + H_STATS - 7, fill=RULE,
-                    width=0.6)
-        col = RED if i % 2 == 0 else NAVY
-        f_n = sh.fit(num, lambda s: display(s, "Bold"), 23, 12,
-                     cellw - 30, 1)
-        numw = sh.tw(num, f_n)
-        nx = cx + cellw / 2.0 + 9
-        sh.text(nx, Y_STATS + 1, num, f_n, col, anchor="ma")
-        gu = 13.0
-        STAT_GLYPHS[i](sh, nx - numw / 2.0 - gu - 5.0, Y_STATS + 6.5, gu, col)
-        f_c = sans(5.5, "Medium")
-        lines = sh.wrap(cap, f_c, cellw - 10)[:2]
-        y0 = Y_STATS + H_STATS - 8 - 7.0 * (len(lines) - 1)
-        for k, ln in enumerate(lines):
-            sh.text(cx + cellw / 2.0, y0 + k * 7.0, ln, f_c, GREY,
-                    anchor="ma")
-    sh.hrule(M, Y_STATS + H_STATS, CW, fill=NAVY, width=0.8)
+    sh.rect(M, Y_RULE1, CW, 2.4, fill=INK)
 
     # ======================= REGION TALLY =================================
     counts = {r: 0 for r in REGION_ORDER}
-    for s in HEROES + CARDS:
-        counts[s["region"]] += 1
+    for st in HEROES + CARDS:
+        counts[st["region"]] += 1
     for r, _ in ALSO:
         counts[r] += 1
     total = sum(counts.values())
@@ -1234,155 +1222,169 @@ def build():
         bw = CW * (counts[r] / float(total))
         if i == len(REGION_ORDER) - 1:
             bw = M + CW - x
-        sh.rect(x, Y_REGION, bw - 1.2, H_REGION, fill=REGION_COLOR[r])
+        sh.rect(x, Y_REGION, bw - 1.4, H_REGION, fill=REGION_COLOR[r])
         label = "%s %d" % (r, counts[r])
-        f_r = cond(7.0, "Medium")
-        if sh.tw(label, f_r) + 6 > bw:
+        f_r = cond(7.2, "SemiBold")
+        if sh.tw(label, f_r) + 7 > bw:
             label = "%s %d" % (r.split("-")[0].split(" ")[0], counts[r])
-            f_r = cond(6.0, "Medium")
-        sh.text(x + (bw - 1.2) / 2.0, Y_REGION + H_REGION / 2.0, label, f_r,
-                WHITE, anchor="mm", spacing=0.3)
+            f_r = cond(6.2, "SemiBold")
+        sh.text(x + (bw - 1.4) / 2.0, Y_REGION + H_REGION / 2.0, label, f_r,
+                WHITE, anchor="mm", spacing=0.35)
         x += bw
 
     # ======================= UTC TIMELINE =================================
-    sh.rect(M, Y_TIME, CW, H_TIME, fill=NAVY)
+    sh.rect(M, Y_TIME, CW, H_TIME, fill=(248, 244, 234))
+    sh.rect(M, Y_TIME, CW, H_TIME, outline=RULE, width=0.6)
     mid = Y_TIME + H_TIME / 2.0
-    sh.text(M + 6, mid, "THE DAY IN UTC", cond(6.6, "SemiBold"), GOLD,
-            anchor="lm", spacing=0.5)
-    tx = M + 80
+    sh.text(M + 6, mid, "THE DAY IN UTC", cond(6.8, "SemiBold"), RED,
+            anchor="lm", spacing=0.6)
+    tx = M + 84
     slot = ((M + CW - 6) - tx) / float(len(TIMELINE))
-    f_t = cond(6.4, "Medium")
-    f_e = sans(5.9, "Regular")
+    f_t = cond(6.6, "SemiBold")
+    f_e = sans(6.0, "Regular")
     for i, (t, ev) in enumerate(TIMELINE):
         cx = tx + slot * i
-        sh.text(cx, mid, t, f_t, GOLD, anchor="lm")
-        ex = cx + sh.tw(t, f_t) + 3.5
+        sh.dot(cx - 4.5, mid, 1.9, GOLD)
+        sh.text(cx, mid, t, f_t, INK, anchor="lm")
+        ex = cx + sh.tw(t, f_t) + 4.0
         ev2 = ev
-        while sh.tw(ev2, f_e) > slot - (ex - cx) - 5 and len(ev2) > 6:
+        while sh.tw(ev2, f_e) > slot - (ex - cx) - 6 and len(ev2) > 6:
             ev2 = ev2[:-2]
         if ev2 != ev:
-            ev2 += "…"
-        sh.text(ex, mid, ev2, f_e, (214, 220, 232), anchor="lm")
+            ev2 += "\u2026"
+        sh.text(ex, mid, ev2, f_e, BODY_INK, anchor="lm")
+
+    # ======================= STAT STRIP ===================================
+    cellw = CW / 6.0
+    for i, (num, cap) in enumerate(STATS):
+        cx = M + cellw * i
+        if i:
+            sh.line(cx, Y_STATS + 3, cx, Y_STATS + H_STATS - 4, fill=RULE,
+                    width=0.6)
+        col = RED if i % 2 == 0 else NAVY
+        f_n = sh.fit(num, lambda t: display(t, "Bold"), 20, 11,
+                     cellw - 30, 1)
+        numw = sh.tw(num, f_n)
+        nx = cx + cellw / 2.0 + 8
+        sh.text(nx, Y_STATS, num, f_n, col, anchor="ma")
+        STAT_GLYPHS[i](sh, nx - numw / 2.0 - 17.0, Y_STATS + 3.0, 13.0, col)
+        f_c = sans(5.5, "Medium")
+        lines = sh.wrap(cap, f_c, cellw - 10)[:2]
+        y0 = Y_STATS + H_STATS - 7 - 6.8 * (len(lines) - 1)
+        for k, ln in enumerate(lines):
+            sh.text(cx + cellw / 2.0, y0 + k * 6.8, ln, f_c, GREY,
+                    anchor="ma")
+    sh.hrule(M, Y_STATS + H_STATS + 1, CW, fill=INK, width=0.9)
 
     # ======================= HERO CARDS ===================================
-    gut = 9
+    gut = 8
     hw = (CW - gut * 2) / 3.0
     chip_h = 13
-    illo_h = 92
+    illo_h = 90
 
-    for i, s in enumerate(HEROES):
+    for i, st in enumerate(HEROES):
         x = M + (hw + gut) * i
         yy = Y_HERO
-        chip(sh, x, yy, hw * 0.63, chip_h, s["chip"],
-             REGION_COLOR[s["region"]])
-        f_tag = cond(6.0, "SemiBold")
-        tagw = sh.tw(s["tag"], f_tag) + 10
-        sh.rect(x + hw - tagw, yy, tagw, chip_h, fill=PAPER_DEEP)
-        sh.rect(x + hw - tagw, yy, tagw, chip_h, outline=NAVY, width=0.5)
-        sh.text(x + hw - tagw / 2.0, yy + chip_h / 2.0, s["tag"], f_tag,
-                NAVY, anchor="mm")
+        card_frame(sh, x, yy, hw, H_HERO)
+        chip(sh, x, yy, hw, chip_h, st["chip"], REGION_COLOR[st["region"]],
+             size=6.4)
+        certainty_mark(sh, x + hw - 4, yy + 3.2, st["cert"], 5.2)
         yy += chip_h
-        paint(sh, s["art"], x, yy, hw, illo_h)
-        sh.rect(x, yy, hw, illo_h, outline=(198, 190, 174), width=0.5)
-        sh.rect(x, yy + illo_h - 11, 12, 11, fill=(255, 255, 255))
-        sh.text(x + 6, yy + illo_h - 5.5, str(s["n"]), cond(6.6, "SemiBold"),
-                NAVY, anchor="mm")
-        yy += illo_h + 4.5
-        sh.text(x, yy, s["kicker"], cond(6.2, "Medium"), RED, anchor="la",
-                spacing=0.3)
-        certainty_mark(sh, x + hw, yy, s["cert"], 5.4)
-        yy += 9
-        sh.hrule(x, yy, hw, fill=NAVY, width=0.7)
-        yy += 4.5
-        f_h = sh.fit(s["head"], lambda t: display(t, "Bold"), 16.5, 11.0,
-                     hw, 2)
-        lines = sh.wrap(s["head"], f_h, hw)[:2]
-        for k, ln in enumerate(lines):
-            sh.text(x, yy + k * 17.5, ln, f_h, NAVY)
-        yy += 17.5 * 2 + 3.5
-        end = sh.para(x, yy, s["text"], body(7.1), hw, 9.4, INK,
-                      max_lines=5, justify=True)
-        sh.text(x, end + 0.5, s["src"], body_i(6.3), GREY)
-
-    sh.hrule(M, Y_HERO + H_HERO, CW, fill=NAVY, width=0.9)
+        paint(sh, st["art"], x, yy, hw, illo_h)
+        py = yy + 5
+        for text, bg in st["pills"]:
+            pill(sh, x + hw - 5, py, text, bg, size=6.6, h=12.5, anchor="r")
+            py += 15
+        sh.rect(x, yy + illo_h - 11, 13, 11, fill=CARD)
+        sh.text(x + 6.5, yy + illo_h - 5.5, str(st["n"]),
+                cond(6.8, "SemiBold"), INK, anchor="mm")
+        yy += illo_h + 4
+        sh.text(x + 5, yy, st["kicker"], cond(6.2, "SemiBold"), RED,
+                spacing=0.35)
+        yy += 8.5
+        sh.hrule(x + 5, yy, hw - 10, fill=INK, width=0.7)
+        yy += 4
+        f_h = sh.fit(st["head"], lambda t: display(t, "Bold"), 17.5, 11.5,
+                     hw - 10, 2)
+        for k, ln in enumerate(sh.wrap(st["head"], f_h, hw - 10)[:2]):
+            sh.text(x + 5, yy + k * 18.0, ln, f_h, INK)
+        yy += 18.0 * 2 + 4
+        end = sh.para(x + 5, yy, st["text"], body(7.0), hw - 10, 8.9,
+                      BODY_INK, max_lines=3)
+        sh.text(x + 5, end + 0.5, st["src"], body_i(6.2), GREY)
 
     # ======================= CARD ROWS ====================================
     cgut = 7
-    cw = (CW - cgut * 5) / 6.0
+    cw = (CW - cgut * 4) / 5.0
     c_chip = 11
-    c_illo = 60
+    c_illo = 71
 
     for row, ry in enumerate((Y_ROW1, Y_ROW2)):
-        for i, s in enumerate(CARDS[row * 6:(row + 1) * 6]):
+        for i, st in enumerate(CARDS[row * 5:(row + 1) * 5]):
             x = M + (cw + cgut) * i
             yy = ry
-            chip(sh, x, yy, cw, c_chip, s["chip"],
-                 REGION_COLOR[s["region"]], size=5.5)
+            card_frame(sh, x, yy, cw, H_ROW)
+            chip(sh, x, yy, cw, c_chip, st["chip"],
+                 REGION_COLOR[st["region"]], size=5.6)
+            certainty_mark(sh, x + cw - 3, yy + 2.6, st["cert"], 4.6)
             yy += c_chip
-            paint(sh, s["art"], x, yy, cw, c_illo)
-            sh.rect(x, yy, cw, c_illo, outline=(198, 190, 174), width=0.5)
-            sh.rect(x, yy + c_illo - 9, 10, 9, fill=(255, 255, 255))
-            sh.text(x + 5, yy + c_illo - 4.5, str(s["n"]),
-                    cond(5.8, "SemiBold"), NAVY, anchor="mm")
-            f_tg = cond(5.2, "SemiBold")
-            tgw = sh.tw(s["tag"], f_tg) + 6
-            sh.rect(x + cw - tgw, yy, tgw, 9, fill=(252, 249, 240))
-            sh.text(x + cw - tgw / 2.0, yy + 4.5, s["tag"], f_tg, NAVY,
-                    anchor="mm")
+            paint(sh, st["art"], x, yy, cw, c_illo)
+            py = yy + 4
+            for text, bg in st["pills"]:
+                pill(sh, x + cw - 4, py, text, bg, size=5.8, h=10.5,
+                     anchor="r")
+                py += 12.5
+            sh.rect(x, yy + c_illo - 9.5, 11, 9.5, fill=CARD)
+            sh.text(x + 5.5, yy + c_illo - 4.75, str(st["n"]),
+                    cond(5.9, "SemiBold"), INK, anchor="mm")
             yy += c_illo + 3.5
-            sh.text(x, yy, s["kicker"], cond(5.3, "Medium"), RED,
+            sh.text(x + 4, yy, st["kicker"], cond(5.4, "SemiBold"), RED,
                     spacing=0.25)
-            certainty_mark(sh, x + cw, yy, s["cert"], 4.6)
             yy += 7.5
-            sh.hrule(x, yy, cw, fill=NAVY, width=0.6)
-            yy += 4.0
-            f_h = sh.fit(s["head"], lambda t: display(t, "Bold"), 10.5, 7.2,
-                         cw, 3)
-            lines = sh.wrap(s["head"], f_h, cw)[:3]
-            for k, ln in enumerate(lines):
-                sh.text(x, yy + k * 11.2, ln, f_h, NAVY)
-            yy += 11.2 * 3 + 2.5
-            end = sh.para(x, yy, s["text"], body(6.0), cw, 8.0, INK,
-                          max_lines=4)
-            sh.text(x, end + 0.4, s["src"], body_i(5.4), GREY)
-        sh.hrule(M, ry + H_ROW - 8, CW,
-                 fill=NAVY if row else RULE, width=0.9 if row else 0.7)
+            sh.hrule(x + 4, yy, cw - 8, fill=INK, width=0.6)
+            yy += 3.5
+            f_h = sh.fit(st["head"], lambda t: display(t, "Bold"), 12.0, 8.0,
+                         cw - 8, 3)
+            for k, ln in enumerate(sh.wrap(st["head"], f_h, cw - 8)[:3]):
+                sh.text(x + 4, yy + k * 11.9, ln, f_h, INK)
+            yy += 11.9 * 3 + 1.5
+            end = sh.para(x + 4, yy, st["text"], body(6.1), cw - 8, 8.0,
+                          BODY_INK, max_lines=2)
+            sh.text(x + 4, end + 0.4, st["src"], body_i(5.5), GREY)
 
-    # ======================= MAP + ALSO ===================================
-    map_w = 346
-    also_x = M + map_w + 16
-    sh.text(M, Y_BOTHDR, "WHERE IT HAPPENED", cond(7.4, "SemiBold"), NAVY,
-            spacing=0.6)
+    # ======================= MAP + WIRE BRIEFS ============================
+    map_w = 316
+    also_x = M + map_w + 14
+    sh.text(M, Y_BOTHDR, "WHERE IT HAPPENED", cond(7.6, "SemiBold"), INK,
+            spacing=0.7)
     sh.text(M + map_w, Y_BOTHDR + 1.6, "pins match story numbers",
             body_i(5.6), GREY, anchor="ra")
-    hdr = "ALSO ON WEDNESDAY 25 NOVEMBER — %d MORE STORIES" % len(ALSO)
-    sh.text(also_x, Y_BOTHDR, hdr, cond(7.4, "SemiBold"), NAVY, spacing=0.4)
-    sh.hrule(M, Y_BOTHDR + 11, map_w, fill=NAVY, width=0.6)
-    sh.hrule(also_x, Y_BOTHDR + 11, M + CW - also_x, fill=NAVY, width=0.6)
+    hdr = "ALSO ON WEDNESDAY 25 NOVEMBER \u2014 %d MORE DATED STORIES" % len(ALSO)
+    sh.text(also_x, Y_BOTHDR, hdr, cond(7.6, "SemiBold"), INK, spacing=0.45)
+    sh.hrule(M, Y_BOTHDR + 11, map_w, fill=INK, width=0.7)
+    sh.hrule(also_x, Y_BOTHDR + 11, M + CW - also_x, fill=INK, width=0.7)
 
-    # --- dot map -----------------------------------------------------------
     my = Y_BOTTOM
-    sh.rect(M, my, map_w, H_MAP, fill=(239, 233, 218))
-    sh.rect(M, my, map_w, H_MAP, outline=(212, 204, 188), width=0.5)
+    sh.rect(M, my, map_w, H_MAP, fill=(234, 239, 243))
+    sh.rect(M, my, map_w, H_MAP, outline=RULE, width=0.6)
     cell = map_w / float(MAP_COLS)
-    rcell = H_MAP / float(MAP_ROWS)
-    dr = min(cell, rcell) * 0.36
+    rcell = (H_MAP - 12) / float(MAP_ROWS)
+    dr = min(cell, rcell) * 0.38
     for r, spans in enumerate(_ROWS):
-        for (a, b) in spans:
-            for c in range(a, b + 1):
+        for (a_, b_) in spans:
+            for c in range(a_, b_ + 1):
                 sh.dot(M + (c + 0.5) * cell, my + (r + 0.5) * rcell, dr,
-                       (140, 152, 166))
+                       (150, 166, 182))
 
-    # pins, with deterministic de-overlap
-    placed = []
-    pins = []
-    for s in HEROES + CARDS:
-        if not s["ll"]:
+    placed, pins = [], []
+    for st in HEROES + CARDS:
+        if not st["ll"]:
             continue
-        col, row_ = ll_to_cell(s["ll"][0], s["ll"][1])
-        pins.append((s["n"], M + (col + 0.5) * cell, my + (row_ + 0.5) * rcell))
-    pins.sort(key=lambda p: (p[1], p[2]))
-    R = 4.8
+        col, row_ = ll_to_cell(st["ll"][0], st["ll"][1])
+        pins.append((st["n"], M + (col + 0.5) * cell,
+                     my + (row_ + 0.5) * rcell))
+    pins.sort(key=lambda q: (q[1], q[2]))
+    R = 6.4
     for n, px, py in pins:
         ox, oy = px, py
         for _ in range(28):
@@ -1395,34 +1397,32 @@ def build():
             if abs(dx) < 0.01 and abs(dy) < 0.01:
                 dx, dy = 1.0, -1.0
             mag = (dx * dx + dy * dy) ** 0.5
-            px += dx / mag * 1.6
-            py += dy / mag * 1.6
-            # never let a pin wander far from where the story happened
+            px += dx / mag * 1.8
+            py += dy / mag * 1.8
             ddx, ddy = px - ox, py - oy
             dd = (ddx * ddx + ddy * ddy) ** 0.5
-            if dd > 7.0:
-                px, py = ox + ddx / dd * 7.0, oy + ddy / dd * 7.0
+            if dd > 9.0:
+                px, py = ox + ddx / dd * 9.0, oy + ddy / dd * 9.0
                 break
         px = min(max(px, M + R + 1), M + map_w - R - 1)
-        py = min(max(py, my + R + 1), my + H_MAP - R - 10)
+        py = min(max(py, my + R + 1), my + H_MAP - R - 13)
         placed.append((px, py))
-        sh.dot(px, py, R + 1.2, (252, 248, 238))
+        sh.dot(px, py, R + 1.3, WHITE)
         sh.dot(px, py, R, RED_BRIGHT)
-        sh.text(px, py + 0.2, str(n), cond(5.6, "SemiBold"), WHITE,
+        sh.text(px, py + 0.2, str(n), cond(6.6, "SemiBold"), WHITE,
                 anchor="mm")
-    sh.rect(M + 1, my + H_MAP - 10, map_w - 2, 9, fill=(246, 241, 229))
-    sh.text(M + 4, my + H_MAP - 9, "Story 8 (Hera) is in orbit — not "
-            "plotted. Equirectangular; dots are land.", body_i(5.3), GREY)
+    sh.rect(M + 1, my + H_MAP - 11, map_w - 2, 10, fill=(246, 242, 232))
+    sh.text(M + 4, my + H_MAP - 9.5,
+            "Story 8 (Hera) is in orbit \u2014 not plotted. Equirectangular.",
+            body_i(5.4), GREY)
 
-    # --- also-on columns ---------------------------------------------------
-    col_gap = 13
-    ncols = 2
-    colw = (M + CW - also_x - col_gap * (ncols - 1)) / float(ncols)
-    f_a = body(5.85)
-    f_an = cond(6.1, "SemiBold")
-    f_rb = body_b(5.85)
-    per = (len(ALSO) + ncols - 1) // ncols
-    for ci in range(ncols):
+    col_gap = 14
+    colw = (M + CW - also_x - col_gap) / 2.0
+    f_a = body(6.0)
+    f_an = cond(6.4, "SemiBold")
+    f_rb = body_b(6.0)
+    per = (len(ALSO) + 1) // 2
+    for ci in range(2):
         cx = also_x + (colw + col_gap) * ci
         cy = my
         for k in range(per):
@@ -1431,40 +1431,37 @@ def build():
                 break
             region, txt = ALSO[idx]
             num = len(HEROES) + len(CARDS) + idx + 1
-            col = REGION_COLOR[region]
+            colr = REGION_COLOR[region]
             lead = "%d" % num
-            sh.text(cx, cy, lead, f_an, col)
-            lx = cx + sh.tw(lead, f_an) + 2.6
+            sh.text(cx, cy, lead, f_an, colr)
+            lx = cx + sh.tw(lead, f_an) + 3.0
             rl = region.title().replace("Asia-Pacific", "Asia-Pac.")
-            sh.text(lx, cy, rl + ":", f_rb, col)
-            tx0 = lx + sh.tw(rl + ":", f_rb) + 2.4
+            sh.text(lx, cy, rl + ":", f_rb, colr)
+            tx0 = lx + sh.tw(rl + ":", f_rb) + 2.6
             lines = sh.wrap(txt, f_a, colw - (tx0 - cx))
             if lines:
-                sh.text(tx0, cy, lines[0], f_a, INK)
-            cy += 7.5
+                sh.text(tx0, cy, lines[0], f_a, BODY_INK)
+            cy += 7.8
             rest = " ".join(lines[1:])
             if rest:
-                cy = sh.para(cx + 7, cy, rest, f_a, colw - 7, 7.5, INK,
+                cy = sh.para(cx + 7, cy, rest, f_a, colw - 7, 7.8, BODY_INK,
                              max_lines=2)
-            cy += 0.6
+            cy += 0.8
 
     # ======================= DATE CHECK ===================================
-    sh.rect(M, Y_DATECHK, CW, H_DATECHK, fill=(250, 243, 232))
+    sh.rect(M, Y_DATECHK, CW, H_DATECHK, fill=(252, 244, 234))
     sh.rect(M, Y_DATECHK, CW, H_DATECHK, outline=RED, width=1.0)
-    sh.text(M + 8, Y_DATECHK + 7.5, "DATE CHECK", cond(7.2, "SemiBold"), RED,
+    sh.text(M + 7, Y_DATECHK + 6.0, "DATE CHECK", cond(7.0, "SemiBold"), RED,
             spacing=0.6)
-    sh.para(M + 78, Y_DATECHK + 6.5, DATE_CHECK, body(5.9), CW - 90, 8.0,
-            INK, max_lines=3)
+    sh.para(M + 74, Y_DATECHK + 5.5, DATE_CHECK, body(5.9), CW - 84, 7.8,
+            BODY_INK, max_lines=3)
 
     # ======================= FOOTER =======================================
-    sh.hrule(M, Y_FOOT, CW, fill=RULE, width=0.6)
-    sh.para(M, Y_FOOT + 4, SOURCES_LINE, body(5.5), CW, 7.4, GREY,
+    sh.text(M, Y_FOOT, LEGEND_LINE, cond(5.7, "SemiBold"), INK, spacing=0.3)
+    sh.para(M, Y_FOOT + 9, SOURCES_LINE, body(5.4), CW, 7.0, GREY,
             max_lines=2)
-    sh.text(W / 2.0, Y_FOOT + 24, LEGEND_LINE, cond(5.8, "Medium"), NAVY,
-            anchor="ma", spacing=0.25)
-    sh.text(W / 2.0, Y_FOOT + 36,
-            "Drawn in code for make.fun · one sheet, one day · "
-            "@cherry-vodka", body_i(5.4), GREY, anchor="ma")
+    sh.text(M + CW, Y_FOOT, "1,024 \u00d7 1,024 \u00b7 DRAWN IN CODE",
+            cond(5.7, "SemiBold"), GREY, anchor="ra", spacing=0.3)
 
     return sh.img
 

@@ -34,14 +34,19 @@ python tools/render.py entry.png     # redraw the sheet from scratch
 
 | Tier | Count | Treatment |
 |---|---|---|
-| Hero | 3 | Chip, illustration, dateline, certainty, headline, 5 lines, sources |
-| Card | 12 | Chip, illustration, dateline, certainty, headline, 4 lines, sources |
-| Wire | 32 | Numbered one-liners, grouped by region, each with its source |
+| Hero | 3 | Chip, illustration, fact labels, dateline, certainty, headline, sources |
+| Card | 10 | Chip, illustration, fact labels, dateline, certainty, headline, sources |
+| Wire | 34 | Numbered one-liners, grouped by region, each with its source |
 | Excluded | 6 | Named in the DATE CHECK box with the day they actually broke |
 
-Plus a six-figure statistics strip with its own pictograms, a region tally bar
-computed from the story list itself, a UTC timeline of the day, and a
-dot-matrix world map whose pins carry the story numbers.
+Plus a dated top rail, a six-figure statistics strip with its own pictograms, a
+region tally bar computed from the story list itself, a UTC timeline of the day,
+and a dot-matrix world map whose pins carry the story numbers.
+
+The day's hard numbers are set on the artwork as labels rather than buried in
+the body copy — `TAIEX -6%`, `SOFTBANK -16.1%`, `490,334 DEAD`, `1ST PAKISTANI`,
+`2 DEAD, 48 HURT`, `16 ECONOMIES` — so the sheet still carries its figures when
+it is read small.
 
 The lead: Asia's AI trade cracking (Taiex −6%, TSMC −8.1%, Kospi 4,725.84,
 SoftBank −16.1%); a leaked Rosstat registry putting Russian war dead at
@@ -74,20 +79,20 @@ is no clock read, no RNG and no dependence on dict iteration order, in either
 ```
 $ MAKEFUN_OUTPUT_DIR=run1 python main.py && MAKEFUN_OUTPUT_DIR=run2 python main.py
 $ md5sum run1/entry.png run2/entry.png
-855ac2930fe9de0dff20f9f17fb73cfe  run1/entry.png
-855ac2930fe9de0dff20f9f17fb73cfe  run2/entry.png
+f083ea825628ab5f63d77e4abed3460e  run1/entry.png
+f083ea825628ab5f63d77e4abed3460e  run2/entry.png
 ```
 
 **Rendering.** The sheet is composed at 2× (2048 px) and resampled to
 1024 × 1024 with Lanczos, which keeps 6 pt type legible and hairline rules
-even. Output is 710,677 bytes, under the 1 MiB cap.
+even. Output is 673,785 bytes, under the 1 MiB cap.
 
 **Layout.** Section tops are fixed constants (`Y_MAST` … `Y_FOOT`) rather than
 an accumulating cursor, so one overlong headline cannot cascade into the block
 below. Headlines use a `fit()` helper that steps the type size down until the
 text wraps into its allotted lines.
 
-**Illustrations.** Each of the 15 scenes is rendered into its own `Panel` the
+**Illustrations.** Each of the 13 scenes is rendered into its own `Panel` the
 size of its box and pasted, so art is hard-clipped and cannot bleed into
 neighbouring type. Six smaller pictograms sit beside the statistics.
 
