@@ -1478,22 +1478,14 @@ def main():
     big = build()
     img = big.resize((W, H), Image.LANCZOS)
 
-    # The sheet is flat vector art: a handful of inks, plus the soft edges
-    # Lanczos leaves behind.  A 256-colour palette holds all of it, and the
-    # file lands about a third of the size -- which matters, because the
-    # board breaks a tie on judge win rate in favour of the smaller entry.
-    # Dithering is off: with this few distinct inks there is nothing to
-    # dither, and it would only add noise for the encoder to carry.
-    rgb = img.convert("RGB")
-    img = rgb.quantize(colors=256, method=Image.MEDIANCUT, dither=Image.NONE)
     img.save(out, "PNG", optimize=True)
 
-    # Stay under the 1 MiB ceiling; cut the palette further only if we must.
+    # Stay under the 1 MiB ceiling; palette-reduce only if we must.
     limit = 1024 * 1024
     if os.path.getsize(out) > limit:
-        for colors in (192, 128, 64):
-            q = rgb.quantize(colors=colors, method=Image.MEDIANCUT,
-                             dither=Image.NONE)
+        for colors in (256, 192, 128):
+            q = img.convert("RGB").quantize(colors=colors, method=Image.MEDIANCUT,
+                                            dither=Image.NONE)
             q.save(out, "PNG", optimize=True)
             if os.path.getsize(out) <= limit:
                 break
