@@ -1,0 +1,3 @@
+# Only needed to REDRAW the sheet (tools/render.py).
+# The entry itself (main.py) is standard library only.
+Pillow==12.1.0
